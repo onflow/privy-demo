@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getAccessToken, usePrivy } from "@privy-io/react-auth";
+import { getAccessToken, usePrivy, useWallets } from "@privy-io/react-auth";
 import Head from "next/head";
 import WalletList from "../components/WalletList";
 
@@ -54,6 +54,10 @@ export default function DashboardPage() {
   const googleSubject = user?.google?.subject || null;
   const twitterSubject = user?.twitter?.subject || null;
   const discordSubject = user?.discord?.subject || null;
+
+  // This is a list of all the wallets that the user has linked to their account
+  const wallets = useWallets();
+  console.log("wallets", wallets);
 
   return (
     <>
